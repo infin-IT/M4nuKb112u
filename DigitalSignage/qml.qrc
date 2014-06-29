@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>DigitalClock.qml</file>
+        <file>MetroMenu.qml</file>
+        <file>TimeLine.qml</file>
+        <file>Scaling.js</file>
+	<file>Scrollbar.qml</file>
+        <file>Positioning.js</file>
+        <file>Weather.qml</file>
+        <file>AViewer.qml</file>
+        <file>BackgroundChanger.qml</file>
+    </qresource>
+</RCC>
