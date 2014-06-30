@@ -1,6 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Window 2.1
-import "Scaling.js" as Scales
+import "DigitalSignage.js" as Func
 
 Window
 {
@@ -38,7 +38,7 @@ Window
         onToTimeline:
         {
             //console.debug("halojohn>>>>>>>>>>>>>>>>>>>>>>")
-            load1.setSource("Timeline.qml")
+            load1.setSource("TimeLine.qml")
         }
 
     }

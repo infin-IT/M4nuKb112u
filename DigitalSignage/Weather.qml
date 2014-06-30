@@ -1,6 +1,5 @@
 import QtQuick 2.0
-import "Scaling.js" as Scales
-import "Positioning.js" as Pos
+import "DigitalSignage.js" as Func
 import QtQuick.XmlListModel 2.0
 
 Rectangle {
@@ -32,10 +31,10 @@ Rectangle {
     {
         id:txtConditionShd
         x:1
-        y:Scales.scaleY(parent,10)+1
+        y:Func.scaleY(parent,10)+1
         color:"#888888"
         font.family: weatherFont.name
-        font.pixelSize: Scales.scaleY(containerMaster,70)
+        font.pixelSize: Func.scaleY(containerMaster,70)
         text: txtCondition.text
     }
 
@@ -44,10 +43,10 @@ Rectangle {
     {
         id:txtCondition
         x:0
-        y:Scales.scaleY(parent,10)
+        y:Func.scaleY(parent,10)
         color:"white"
         font.family: weatherFont.name
-        font.pixelSize: Scales.scaleY(containerMaster,70)
+        font.pixelSize: Func.scaleY(containerMaster,70)
     }
 
     //Timer Weather
@@ -70,11 +69,11 @@ Rectangle {
     {
         id:txtTempIconShd
         color:"#888888"
-        x:Scales.scaleX(containerMaster,30)+1
-        y:Scales.scaleY(containerMaster,65)+1
+        x:Func.scaleX(containerMaster,30)+1
+        y:Func.scaleY(containerMaster,65)+1
         text:"k"
         font.family: weatherFont.name
-        font.pixelSize: Scales.scaleY(containerMaster,25)
+        font.pixelSize: Func.scaleY(containerMaster,25)
     }
 
     //TemperatureIcon
@@ -82,11 +81,11 @@ Rectangle {
     {
         id:txtTempIcon
         color:"white"
-        x:Scales.scaleX(containerMaster,30)
-        y:Scales.scaleY(containerMaster,65)
+        x:Func.scaleX(containerMaster,30)
+        y:Func.scaleY(containerMaster,65)
         text:"k"
         font.family: weatherFont.name
-        font.pixelSize: Scales.scaleY(containerMaster,25)
+        font.pixelSize: Func.scaleY(containerMaster,25)
     }
 
     //Temperature (Shadow)
@@ -94,11 +93,11 @@ Rectangle {
     {
         id:txtTempShd
         color:"#888888"
-        x:Scales.scaleX(containerMaster,50)+1
-        y:Scales.scaleY(containerMaster,59)+1
+        x:Func.scaleX(containerMaster,50)+1
+        y:Func.scaleY(containerMaster,59)+1
         text:txtTemp.text
         font.family: argh.name
-        font.pixelSize: Scales.scaleY(containerMaster,25)
+        font.pixelSize: Func.scaleY(containerMaster,25)
     }
 
     //Temperature
@@ -106,10 +105,10 @@ Rectangle {
     {
         id:txtTemp
         color:"white"
-        x:Scales.scaleX(containerMaster,50)
-        y:Scales.scaleY(containerMaster,59)
+        x:Func.scaleX(containerMaster,50)
+        y:Func.scaleY(containerMaster,59)
         font.family: argh.name
-        font.pixelSize: Scales.scaleY(containerMaster,25)
+        font.pixelSize: Func.scaleY(containerMaster,25)
     }
 
     //CelciusIcon (Shadow)
@@ -117,11 +116,11 @@ Rectangle {
     {
         id:txtCelcIconShd
         color:"#888888"
-        x:Scales.scaleX(containerMaster,75)+1
-        y:Scales.scaleY(containerMaster,65)+1
+        x:Func.scaleX(containerMaster,75)+1
+        y:Func.scaleY(containerMaster,65)+1
         text:"l"
         font.family: weatherFont.name
-        font.pixelSize: Scales.scaleY(containerMaster,25)
+        font.pixelSize: Func.scaleY(containerMaster,25)
     }
 
     //CelciusIcon
@@ -129,11 +128,11 @@ Rectangle {
     {
         id:txtCelcIcon
         color:"white"
-        x:Scales.scaleX(containerMaster,75)
-        y:Scales.scaleY(containerMaster,65)
+        x:Func.scaleX(containerMaster,75)
+        y:Func.scaleY(containerMaster,65)
         text:"l"
         font.family: weatherFont.name
-        font.pixelSize: Scales.scaleY(containerMaster,25)
+        font.pixelSize: Func.scaleY(containerMaster,25)
     }
 
     XmlListModel {

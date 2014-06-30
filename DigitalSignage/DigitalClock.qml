@@ -1,6 +1,5 @@
 import QtQuick 2.0
-import "Scaling.js" as Scales
-import "Positioning.js" as Pos
+import "DigitalSignage.js" as Func
 
 Rectangle
 {
@@ -20,11 +19,11 @@ Rectangle
     {
         id:txtWaktuShd
         color:"#888888"
-        x:Scales.scaleX(containerMaster,2)+1
-        y:Scales.scaleY(containerMaster,2)+1
+        x:Func.scaleX(containerMaster,2)+1
+        y:Func.scaleY(containerMaster,2)+1
         text:txtWaktu.text
         font.family: argh.name
-        font.pixelSize: Scales.scaleY(containerMaster,60)
+        font.pixelSize: Func.scaleY(containerMaster,60)
     }
 
     //Waktu
@@ -32,11 +31,11 @@ Rectangle
     {
         id:txtWaktu
         color:"white"
-        x:Scales.scaleX(containerMaster,2)
-        y:Scales.scaleY(containerMaster,2)
+        x:Func.scaleX(containerMaster,2)
+        y:Func.scaleY(containerMaster,2)
         text:Qt.formatTime(new Date(),"hh:mm")
         font.family: argh.name
-        font.pixelSize: Scales.scaleY(containerMaster,60)
+        font.pixelSize: Func.scaleY(containerMaster,60)
     }   
 
     // Digital Clock Timer per Minutes
@@ -60,24 +59,24 @@ Rectangle
     Text
     {
         id:txtTanggalShd
-        y:Pos.bottomOf(txtWaktu,-1*(Scales.scaleY(containerMaster,10)))+1
-        x:Scales.scaleX(containerMaster,14)+1
+        y:Func.bottomOf(txtWaktu,-1*(Func.scaleY(containerMaster,10)))+1
+        x:Func.scaleX(containerMaster,14)+1
         text:txtTanggal.text
         color:"#888888"
         font.family: argh.name
-        font.pixelSize:Scales.scaleY(containerMaster,10)
+        font.pixelSize:Func.scaleY(containerMaster,10)
     }
 
     //Tanggal
     Text
     {
         id:txtTanggal
-        y:Pos.bottomOf(txtWaktu,-1*(Scales.scaleY(containerMaster,10)))
-        x:Scales.scaleX(containerMaster,14)
+        y:Func.bottomOf(txtWaktu,-1*(Func.scaleY(containerMaster,10)))
+        x:Func.scaleX(containerMaster,14)
         text:Qt.formatDate(new Date(),"dddd, dd MMMM yyyy")
         color:"white"
         font.family: argh.name
-        font.pixelSize:Scales.scaleY(containerMaster,10)
+        font.pixelSize:Func.scaleY(containerMaster,10)
     }
 
 
