@@ -1,6 +1,5 @@
 import QtQuick 2.0
-import "Scaling.js" as S
-
+import "DigitalSignage.js" as S
 Rectangle {
     signal isClosed()
     signal isFadeOut()
@@ -13,35 +12,22 @@ Rectangle {
     color:"transparent"
     opacity: 0
     onOpenList:
-    {
-        //console.log("singKepijett:"+index)
+    {        
         for(var i=0;i<listMod.count;i++)
-        {
-            //console.log(listMod.get(i).text)
-            contentModel.append({"text":listMod.get(i).title,"url":listMod.get(i).link})
+        {            
+            contentModel.append({"text":listMod.get(i).text,"url":listMod.get(i).link})
         }
-
         indexNow=index+1;
         countPage=listMod.count
-        request(listMod.get(index).link, function (o) {
+        view.currentIndex=index
+        infoHeader=contentModel.get(index).text
+        var regIHead = /<div class="info-title">(.*?)<\/div>/ig;
+        var regISum = /<div class="info-summary">(.*?)<\/div>/ig;
+        S.request(listMod.get(index).link, function (o) {
             var inp=o.responseText
-            var regIHead = /<div class="info-title">(.*?)<\/div>/ig;
-            infoHeader=regeXecutor(inp,regIHead);
-            var regISum = /<div class="info-summary">(.*?)<\/div>/ig;
-            infoSummary=regeXecutor(inp,regISum);
+            infoSummary=S.regeXecutor(inp,regISum);
         });
-
     }
-
-    function regeXecutor(input,regex)
-    {
-        var match;
-        var result ="";
-        input = input.replace(new RegExp('[\r\n]', 'gi'), '');
-        while (match = regex.exec(input)) { result += match[1]; }
-        return result;
-    }
-
     Rectangle
     {
         anchors.fill: parent
@@ -85,7 +71,6 @@ Rectangle {
                 anchors.topMargin:header.height+header.anchors.topMargin
                 anchors.horizontalCenter: header.horizontalCenter
 
-
                 orientation: ListView.Horizontal
                 snapMode: ListView.SnapOneItem;
                 flickDeceleration: 500
@@ -94,16 +79,23 @@ Rectangle {
                 preferredHighlightEnd: 0
                 highlightRangeMode: ListView.StrictlyEnforceRange
                 highlightFollowsCurrentItem: true
-
+                clip:true
                 spacing:50
                 model: contentModel
                 delegate: contentViewer
-                onMovementEnded:
+                onCurrentIndexChanged:
                 {
                     indexNow=view.currentIndex+1
+                    infoHeader=contentModel.get(view.currentIndex).text
+                    var regISum = /<div class="info-summary">(.*?)<\/div>/ig;
+                    S.request(contentModel.get(view.currentIndex).url, function (o) {
+                        var inp=o.responseText
+                        infoSummary=S.regeXecutor(inp,regISum);
+                    });
                 }
 
         }
+
         ListModel{id:contentModel}
         Rectangle
         {
@@ -124,7 +116,7 @@ Rectangle {
             width:S.scaleX(parent,10)
             height:S.scaleY(parent,3)
             color:"green"
-            //anchors.verticalCenter: parent.verticalCenter
+
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: S.scaleY(parent,5)
@@ -138,9 +130,6 @@ Rectangle {
             }
         }
     }
-
-
-
 
     Behavior on opacity
     {
@@ -158,23 +147,6 @@ Rectangle {
             }
         }
     }
-    function request(url, callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = (function(myxhr) {
-            return function() {
-                callback(myxhr);
-                if(xhr.readyState==4)
-                {
-                    //console.log("wes-----------------------------------------------------"+xhr.readyState+"        "+textContent.contentHeight)
-                    //contentFlick.contentHeight=textContent.contentHeight;
-                }
-            }
-        })(xhr);
-        xhr.open('GET', url, true);
-        xhr.send('');
-    }
-
-
     Component
     {
 

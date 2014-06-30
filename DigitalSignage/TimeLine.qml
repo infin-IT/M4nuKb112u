@@ -1,7 +1,7 @@
 import QtQuick 2.1
 import QtQuick.Window 2.1
 import QtQuick.XmlListModel 2.0
-import "Scaling.js" as S
+import "DigitalSignage.js" as S
 
 Window {
     id:ok
@@ -100,8 +100,8 @@ Window {
                 ListView
                 {
                     id:lvLeft
-                    interactive: false
-                    height:contentHeight
+                    interactive: false                    
+                    anchors.fill: parent
                     model: lmLeft
                     spacing: 50
                     delegate:delLeft
@@ -120,12 +120,10 @@ Window {
                 {
                     id:lvRight
                     interactive: false
-                    height:contentHeight
                     anchors.fill: parent
                     model: lmRight
                     spacing: 50
                     delegate: delRight
-
                 }
             }
         }
