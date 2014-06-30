@@ -38,8 +38,9 @@ function regeXecutor(input,regex)
 {
     var match;
     var result ="";
-    input = input.replace(new RegExp('[\r\n]', 'gi'), '');
-    while (match = regex.exec(input)) { result += match[1]; }
+    //input = input.replace(new RegExp('[\r\n]', 'gi'), '');
+    while (match = regex.exec(input)) { result += match[1]+" "; }
+
     return result;
 }
 

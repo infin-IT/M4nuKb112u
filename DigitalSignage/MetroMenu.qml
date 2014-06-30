@@ -13,7 +13,7 @@ Rectangle
     anchors.bottom: parent.bottom
     anchors.bottomMargin: Func.scaleX(parent,5)
     anchors.top: parent.top
-    anchors.topMargin: Func.scaleX(parent,5)
+    anchors.topMargin: 0
 
     color:"transparent"
     property string path: "http://192.168.0.102/DigitalSignage/MetroMenu/"
@@ -98,29 +98,40 @@ Rectangle
         anchors.leftMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
-        height: Func.scaleY(parent,20)
+        height: Func.scaleY(parent,30)
         color:"#603cba"
         antialiasing: true
         //border.color: "white"
         opacity: 1
 
-        Text
-        {
-            anchors.centerIn: parent
-            text:"News Feed"
-            font.pixelSize:metrofont_size_h1
-            font.family: metrofont_font
-            color:metrofont_color
-        }
+//        Text
+//        {
+//            anchors.centerIn: parent
+//            text:"News Feed"
+//            font.pixelSize:metrofont_size_h1
+//            font.family: metrofont_font
+//            color:metrofont_color
+//        }
 
-        MouseArea
+        Loader
         {
+            id:load1
             anchors.fill:parent
-            onClicked:
+            source: "HeadlineNews.qml"
+            onLoaded:
             {
-                load1.source= "Timeline.qml"
+                load1.item.start()
             }
         }
+
+//        MouseArea
+//        {
+//            anchors.fill:parent
+//            onClicked:
+//            {
+//                load1.source= "Timeline.qml"
+//            }
+//        }
     }
 
     //CONTAINER 2
@@ -128,7 +139,7 @@ Rectangle
     {
         id:container2
         y:Func.bottomOf(container1,10)
-        width: Func.scaleX(parent,50)-10
+        width: Func.scaleX(parent,45)-10
         height: width
         color:"#b91d47"
         antialiasing: true
@@ -175,7 +186,7 @@ Rectangle
         id:container3
         y:Func.bottomOf(container1,10)
         x:Func.rightOf(container2,10)
-        width: Func.scaleX(parent,50)
+        width: Func.scaleX(parent,55)
         height: Func.scaleY(parent,33)-10
         color:"#00a300"
         antialiasing: true
@@ -206,7 +217,7 @@ Rectangle
     {
         id:container4
         y:Func.bottomOf(container2,10)
-        width: Func.scaleX(parent,50)-10
+        width: Func.scaleX(parent,45)-10
         height: width
         color:"#00aba9"
         antialiasing: true
@@ -238,8 +249,8 @@ Rectangle
         id:container5
         y:Func.bottomOf(container3,10)
         x:Func.rightOf(container2,10)
-        width: Func.scaleX(parent,50)
-        height: Func.scaleY(parent,22)
+        width: Func.scaleX(parent,55)
+        height: Func.scaleY(parent,15)
         color:"#2d89ef"
         antialiasing: true
         //border.color: "black"
