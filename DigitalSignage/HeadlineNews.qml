@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "Scaling.js" as Scales
 
 Rectangle {
     id:masterContainer
@@ -20,6 +21,14 @@ Rectangle {
 
     Rectangle
     {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+
+        height: Scales.scaleY(parent,30)
 
     }
 }
